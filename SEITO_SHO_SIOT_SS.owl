@@ -1,0 +1,1201 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.seido.fr/seito/siot"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.seido.fr/seito/siot">
+    <Prefix name="" IRI="http://www.seido.fr/seito/siot"/>
+    <Prefix name="om" IRI="http://www.wurvoc.org/vocabularies/om-1.8/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="foaf" IRI="http://xmlns.com/foaf/0.1/"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="siot" IRI="http://www.seido.fr/seito/siot#"/>
+    <Prefix name="saref" IRI="https://w3id.org/saref#"/>
+    <Prefix name="schema" IRI="http://schema.org/"/>
+    <Prefix name="dcterms" IRI="http://purl.org/dc/terms/"/>
+    <Prefix name="seitoker" IRI="http://www.seido.fr/seito/kernel#"/>
+    <Prefix name="seitosho" IRI="http://www.seido.fr/seito/smarthome#"/>
+    <Prefix name="saref4bldg" IRI="https://w3id.org/def/saref4bldg#"/>
+    <Prefix name="finalService" IRI="http://swrl.stanford.edu/ontologies/built-ins/0.0.1-SNAPSHOT/finalService.owl#"/>
+    <Import>http://www.seido.fr/seito/smarthome</Import>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:issued"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2015-04-01</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:creator"/>
+        <IRI>https://www.linkedin.com/in/lauradaniele</IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:modified"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2018-05-02</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Information about changes compared to version 1.1.1: (1)The classes and properties related to how to represent devices in BuildingSpaces (such as the saref:BuildingSpace class,  saref:BuildingObject class and saref:isLocatedIn property) have been removed from SAREF and incorporated  into the SAREF4BLDG extension related to buildings (https://w3id.org/def/saref4bldg), including the reuse of the W3C® WGS84 geo positioning vocabulary; (2)The saref:DeviceCategory and saref:FunctionCategory classes have been removed. Instead, the hierarchy of device categories has been implemented directly as subclasses of the saref:Device class; (3)The information specific for energy efficiency has been moved to the SAREF4ENER extension (https://w3id.org/saref4ener). For example, the saref:Profile class has been redefined to accommodate only the properties that are general enough for any type of profile, not only for energy and power. Details on how to specifically model a power profile can be found in the SAREF4ENER extension (https://w3id.org/saref4ener); (4) The subclasses of the saref:Energy class  have been removed (i.e., Average Energy, Maximum Energy, Minimum Energy, Total Energy, HVAC Energy, Hot Water Energy and Lighting Energy); (5)The saref:Property class has been split into two classes (saref:Property and saref:Measurement), as it is done in the SAREF4ENVI extension (https://w3id.org/def/saref4envi), in order to properly accommodate the distinction between the concept of property (an observable quality of something) and the concept of measurement (a concrete value observed for a property); (6)Too restrictive cardinality restrictions have been revised, sometimes making them optional rather than mandatory (better to make properties mandatory in the extensions that specialize SAREF for a specific purpose, rather than restricting SAREF, whose purpose is more general). For example, definitions of units of measurement using an enumeration (owl:oneOf) were too restrictive because they did not allow using other units than those enumerated. Therefore, the individuals of each class are still there, but the owl:oneOf enumeration has been removed; (7)The saref:UnitOfMeasure subclassesre use individuals from the OM ontology for unit of measures (http://www.wurvoc.org/vocabularies/om-1.6/), but this is not the only solution. It has been clarified in the comments that the OM ontology is an example, but other ontologies can be used; (8)The global restrictions (rdfs:domain and rdfs:range) in object properties have been completely removed not to hinder interoperability. Object properties are now only restricted locally in the classes; (9)The subclasses of saref:Task have been transormed in individuals; (10)The saref:hasTask property has been removed from the saref:Profile class to resolve an ambiguity with the saref:Task class.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">2.1.2</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:contributor"/>
+        <IRI>http://purl.org/net/mpoveda</IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:license"/>
+        <IRI>http://purl.org/NET/rdflicense/cc-by4.0</IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:source"/>
+        <IRI>http://www.etsi.org/deliver/etsi_ts/103200_103299/103264/02.01.01_60/ts_103264v020101p.pdf</IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:created"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2015-02-10</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:contributor"/>
+        <IRI>http://www.garcia-castro.com/foaf.rdf#me</IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Information about changes compared to version 2.1.1: Small version bump to ensure that the turtle-version and the owl-version are up to date.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:publisher"/>
+        <IRI>https://www.tno.nl</IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:title"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SAREF: the Smart Appliances REFerence ontology</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:description"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">The Smart Appliances REFerence (SAREF) ontology is a shared model of consensus that facilitates the matching of existing assets (standards/protocols/datamodels/etc.) in the smart appliances domain. The SAREF ontology provides building blocks that allow separation and recombination of different parts of the ontology depending on specific needs. The starting point of SAREF is the concept of device (e.g., a switch). Devices are tangible objects designed to accomplish a particular task in households, common public buildings or offices. In order to accomplish this task, the device performs one or more functions. For example, a washing machine is designed to wash (task) and to accomplish this task it performs the start and stop function. The SAREF ontology offers a lists of basic functions that can be eventually combined in order to have more complex functions in a single device. For example, a switch offers an actuating function of type &apos;switching on/off&apos;. Each function has some associated commands, which can also be picked up as building blocks from a list. For example, the &apos;switching on/off&apos; is associated with the commands &apos;switch on&apos;, &apos;switch off&apos; and &apos;toggle&apos;. Depending on the function(s) it accomplishes, a device can be found in some corresponding states that are also listed as building blocks. When connected to a network, a device offers a service, which  is a representation of a function to a network that makes the function discoverable, registerable and remotely controllable by other devices in the network. A service can represent one or more functions. A service is offered by a device that wants (a certain set of) its function(s) to be discoverable, registerable, remotely controllable by other devices in the network. A service must specify the device that is offering the service and the function(s) to be represented. A device in the SAREF ontology is also characterized by a profile that can be used to optimize some property, such as Energy, in a home or office that are part of a building.</Literal>
+    </Annotation>
+    <Declaration>
+        <NamedIndividual IRI="#room4LightSwitch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room2MotionSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="saref:SwitchOnService"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room1LightSwitch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room4MotionMeasurement"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room5LightSwitch"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:issued"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room4ComfortPriority"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room4AlarmService"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room3LightSwitch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room4AlarmSwitch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room3AlarmSwitch"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WaterMeasurement"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room2AlarmService"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room2AlarmSwitch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room5SecurityProfile"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room5MotionMeasurement"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room3LightingService"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:creator"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room4ComfortProfile"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room5AlarmService"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room5AlarmSwitch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room4Orchestrator"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room5Orchestrator"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:source"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room5SecurityPriority"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room1MotionMeasurement"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:title"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room1MotionSensor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room3AlarmService"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room4SecurityProfile"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room5NoQoSPriority"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PresentDate"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room5LightingService"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room5NoQoSProfile"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room4SecurityPriority"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room2MotionMeasurement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PeakHours"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="saref:represents"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="saref:isOfferedBy"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:created"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:publisher"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SIOTHome"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room2"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="saref:makesMeasurement"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:modified"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="saref:hasState"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room3MotionMeasurement"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:contributor"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:license"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room4LightingService"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room5MotionSensor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room3MotionSensor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room4MotionSensor"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:description"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#room1LightingService"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#PeakHours"/>
+        <Class abbreviatedIRI="saref:Measurement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PresentDate"/>
+        <Class abbreviatedIRI="saref:Measurement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WaterMeasurement"/>
+        <Class abbreviatedIRI="saref:Measurement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="saref:SwitchOnService"/>
+        <Class abbreviatedIRI="seitoker:BasicService"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="saref:SwitchOnService"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty abbreviatedIRI="saref:represents"/>
+            <Class abbreviatedIRI="saref:OnOffFunction"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saref4bldg:BuildingSpace"/>
+        <NamedIndividual IRI="#SIOTHome"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saref4bldg:BuildingSpace"/>
+        <NamedIndividual IRI="#room1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saref:LightSwitch"/>
+        <NamedIndividual IRI="#room1LightSwitch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:LightingService"/>
+        <NamedIndividual IRI="#room1LightingService"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:MotionMeasurement"/>
+        <NamedIndividual IRI="#room1MotionMeasurement"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:MotionSensor"/>
+        <NamedIndividual IRI="#room1MotionSensor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saref4bldg:BuildingSpace"/>
+        <NamedIndividual IRI="#room2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitosho:AlarmService"/>
+        <NamedIndividual IRI="#room2AlarmService"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitosho:AlarmSwitch"/>
+        <NamedIndividual IRI="#room2AlarmSwitch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:MotionMeasurement"/>
+        <NamedIndividual IRI="#room2MotionMeasurement"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:MotionSensor"/>
+        <NamedIndividual IRI="#room2MotionSensor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saref4bldg:BuildingSpace"/>
+        <NamedIndividual IRI="#room3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitosho:AlarmService"/>
+        <NamedIndividual IRI="#room3AlarmService"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitosho:AlarmSwitch"/>
+        <NamedIndividual IRI="#room3AlarmSwitch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saref:LightSwitch"/>
+        <NamedIndividual IRI="#room3LightSwitch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:LightingService"/>
+        <NamedIndividual IRI="#room3LightingService"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:MotionMeasurement"/>
+        <NamedIndividual IRI="#room3MotionMeasurement"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:MotionSensor"/>
+        <NamedIndividual IRI="#room3MotionSensor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saref4bldg:BuildingSpace"/>
+        <NamedIndividual IRI="#room4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitosho:AlarmService"/>
+        <NamedIndividual IRI="#room4AlarmService"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitosho:AlarmSwitch"/>
+        <NamedIndividual IRI="#room4AlarmSwitch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:ProfileMeasurement"/>
+        <NamedIndividual IRI="#room4ComfortPriority"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:ComfortProfile"/>
+        <NamedIndividual IRI="#room4ComfortProfile"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saref:LightSwitch"/>
+        <NamedIndividual IRI="#room4LightSwitch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:LightingService"/>
+        <NamedIndividual IRI="#room4LightingService"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:MotionMeasurement"/>
+        <NamedIndividual IRI="#room4MotionMeasurement"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:MotionSensor"/>
+        <NamedIndividual IRI="#room4MotionSensor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:TwoOrchestratorService"/>
+        <NamedIndividual IRI="#room4Orchestrator"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:ProfileMeasurement"/>
+        <NamedIndividual IRI="#room4SecurityPriority"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:SecurityProfile"/>
+        <NamedIndividual IRI="#room4SecurityProfile"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saref4bldg:BuildingSpace"/>
+        <NamedIndividual IRI="#room5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitosho:AlarmService"/>
+        <NamedIndividual IRI="#room5AlarmService"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitosho:AlarmSwitch"/>
+        <NamedIndividual IRI="#room5AlarmSwitch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saref:LightSwitch"/>
+        <NamedIndividual IRI="#room5LightSwitch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:LightingService"/>
+        <NamedIndividual IRI="#room5LightingService"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:MotionMeasurement"/>
+        <NamedIndividual IRI="#room5MotionMeasurement"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:MotionSensor"/>
+        <NamedIndividual IRI="#room5MotionSensor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:ProfileMeasurement"/>
+        <NamedIndividual IRI="#room5NoQoSPriority"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:ComfortProfile"/>
+        <NamedIndividual IRI="#room5NoQoSProfile"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:TwoOrchestratorService"/>
+        <NamedIndividual IRI="#room5Orchestrator"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:ProfileMeasurement"/>
+        <NamedIndividual IRI="#room5SecurityPriority"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="seitoker:SecurityProfile"/>
+        <NamedIndividual IRI="#room5SecurityProfile"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual abbreviatedIRI="seitoker:offState"/>
+        <NamedIndividual IRI="#room4AlarmService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#SIOTHome"/>
+        <NamedIndividual IRI="#room1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#SIOTHome"/>
+        <NamedIndividual IRI="#room2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#SIOTHome"/>
+        <NamedIndividual IRI="#room3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#SIOTHome"/>
+        <NamedIndividual IRI="#room4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#SIOTHome"/>
+        <NamedIndividual IRI="#room5"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room1"/>
+        <NamedIndividual IRI="#room1LightSwitch"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room1"/>
+        <NamedIndividual IRI="#room1MotionSensor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:hasState"/>
+        <NamedIndividual IRI="#room1LightSwitch"/>
+        <NamedIndividual abbreviatedIRI="seitoker:offState"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room1LightSwitch"/>
+        <NamedIndividual IRI="#room1LightingService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:makesMeasurement"/>
+        <NamedIndividual IRI="#room1MotionSensor"/>
+        <NamedIndividual IRI="#room1MotionMeasurement"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room1MotionSensor"/>
+        <NamedIndividual IRI="#room1LightingService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room2"/>
+        <NamedIndividual IRI="#room2AlarmSwitch"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room2"/>
+        <NamedIndividual IRI="#room2MotionSensor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:hasState"/>
+        <NamedIndividual IRI="#room2AlarmSwitch"/>
+        <NamedIndividual abbreviatedIRI="seitoker:offState"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room2AlarmSwitch"/>
+        <NamedIndividual IRI="#room2AlarmService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:makesMeasurement"/>
+        <NamedIndividual IRI="#room2MotionSensor"/>
+        <NamedIndividual IRI="#room2MotionMeasurement"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room2MotionSensor"/>
+        <NamedIndividual IRI="#room2AlarmService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room3"/>
+        <NamedIndividual IRI="#room3AlarmSwitch"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room3"/>
+        <NamedIndividual IRI="#room3LightSwitch"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room3"/>
+        <NamedIndividual IRI="#room3MotionSensor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:hasState"/>
+        <NamedIndividual IRI="#room3AlarmSwitch"/>
+        <NamedIndividual abbreviatedIRI="seitoker:onState"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room3AlarmSwitch"/>
+        <NamedIndividual IRI="#room3AlarmService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:hasState"/>
+        <NamedIndividual IRI="#room3LightSwitch"/>
+        <NamedIndividual abbreviatedIRI="seitoker:offState"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room3LightSwitch"/>
+        <NamedIndividual IRI="#room3LightingService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:makesMeasurement"/>
+        <NamedIndividual IRI="#room3MotionSensor"/>
+        <NamedIndividual IRI="#room3MotionMeasurement"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room3MotionSensor"/>
+        <NamedIndividual IRI="#room3AlarmService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room3MotionSensor"/>
+        <NamedIndividual IRI="#room3LightingService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:hasOrchestrator"/>
+        <NamedIndividual IRI="#room4"/>
+        <NamedIndividual IRI="#room4Orchestrator"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room4"/>
+        <NamedIndividual IRI="#room4AlarmSwitch"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room4"/>
+        <NamedIndividual IRI="#room4LightSwitch"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room4"/>
+        <NamedIndividual IRI="#room4MotionSensor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:influences"/>
+        <NamedIndividual IRI="#room4AlarmService"/>
+        <NamedIndividual IRI="#room4SecurityProfile"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:hasState"/>
+        <NamedIndividual IRI="#room4AlarmSwitch"/>
+        <NamedIndividual abbreviatedIRI="seitoker:offState"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room4AlarmSwitch"/>
+        <NamedIndividual IRI="#room4AlarmService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:hasPriority"/>
+        <NamedIndividual IRI="#room4ComfortProfile"/>
+        <NamedIndividual IRI="#room4ComfortPriority"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:hasState"/>
+        <NamedIndividual IRI="#room4LightSwitch"/>
+        <NamedIndividual abbreviatedIRI="seitoker:offState"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room4LightSwitch"/>
+        <NamedIndividual IRI="#room4LightingService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:influences"/>
+        <NamedIndividual IRI="#room4LightingService"/>
+        <NamedIndividual IRI="#room4ComfortProfile"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:makesMeasurement"/>
+        <NamedIndividual IRI="#room4MotionSensor"/>
+        <NamedIndividual IRI="#room4MotionMeasurement"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room4MotionSensor"/>
+        <NamedIndividual IRI="#room4AlarmService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room4MotionSensor"/>
+        <NamedIndividual IRI="#room4LightingService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:orchestrates"/>
+        <NamedIndividual IRI="#room4Orchestrator"/>
+        <NamedIndividual IRI="#room4AlarmService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:orchestrates"/>
+        <NamedIndividual IRI="#room4Orchestrator"/>
+        <NamedIndividual IRI="#room4LightingService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:hasPriority"/>
+        <NamedIndividual IRI="#room4SecurityProfile"/>
+        <NamedIndividual IRI="#room4SecurityPriority"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:hasOrchestrator"/>
+        <NamedIndividual IRI="#room5"/>
+        <NamedIndividual IRI="#room5Orchestrator"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room5"/>
+        <NamedIndividual IRI="#room5AlarmSwitch"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room5"/>
+        <NamedIndividual IRI="#room5LightSwitch"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref4bldg:contains"/>
+        <NamedIndividual IRI="#room5"/>
+        <NamedIndividual IRI="#room5MotionSensor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:influences"/>
+        <NamedIndividual IRI="#room5AlarmService"/>
+        <NamedIndividual IRI="#room5SecurityProfile"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:hasState"/>
+        <NamedIndividual IRI="#room5AlarmSwitch"/>
+        <NamedIndividual abbreviatedIRI="seitoker:offState"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room5AlarmSwitch"/>
+        <NamedIndividual IRI="#room5AlarmService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:hasState"/>
+        <NamedIndividual IRI="#room5LightSwitch"/>
+        <NamedIndividual abbreviatedIRI="seitoker:offState"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room5LightSwitch"/>
+        <NamedIndividual IRI="#room5LightingService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:influences"/>
+        <NamedIndividual IRI="#room5LightingService"/>
+        <NamedIndividual IRI="#room5NoQoSProfile"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:makesMeasurement"/>
+        <NamedIndividual IRI="#room5MotionSensor"/>
+        <NamedIndividual IRI="#room5MotionMeasurement"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room5MotionSensor"/>
+        <NamedIndividual IRI="#room5AlarmService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saref:offers"/>
+        <NamedIndividual IRI="#room5MotionSensor"/>
+        <NamedIndividual IRI="#room5LightingService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:hasPriority"/>
+        <NamedIndividual IRI="#room5NoQoSProfile"/>
+        <NamedIndividual IRI="#room5NoQoSPriority"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:orchestrates"/>
+        <NamedIndividual IRI="#room5Orchestrator"/>
+        <NamedIndividual IRI="#room5AlarmService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:orchestrates"/>
+        <NamedIndividual IRI="#room5Orchestrator"/>
+        <NamedIndividual IRI="#room5LightingService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="seitoker:hasPriority"/>
+        <NamedIndividual IRI="#room5SecurityProfile"/>
+        <NamedIndividual IRI="#room5SecurityPriority"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="saref:hasValue"/>
+        <NamedIndividual IRI="#room1MotionMeasurement"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">presence</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="saref:hasValue"/>
+        <NamedIndividual IRI="#room2MotionMeasurement"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">no presence</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="saref:hasValue"/>
+        <NamedIndividual IRI="#room3MotionMeasurement"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">presence</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="saref:hasValue"/>
+        <NamedIndividual IRI="#room4ComfortPriority"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">100</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="saref:hasValue"/>
+        <NamedIndividual IRI="#room4MotionMeasurement"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">presence</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="saref:hasValue"/>
+        <NamedIndividual IRI="#room4SecurityPriority"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="saref:hasValue"/>
+        <NamedIndividual IRI="#room5MotionMeasurement"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">presence</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="saref:hasValue"/>
+        <NamedIndividual IRI="#room5NoQoSPriority"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="saref:hasValue"/>
+        <NamedIndividual IRI="#room5SecurityPriority"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">100</Literal>
+    </DataPropertyAssertion>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">presence detected - &gt; alarm on</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">A1</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class abbreviatedIRI="seitosho:AlarmService"/>
+                <Variable IRI="#as"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="saref:isOfferedBy"/>
+                <Variable IRI="#as"/>
+                <Variable IRI="#asw"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class abbreviatedIRI="seitosho:AlarmSwitch"/>
+                <Variable IRI="#asw"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="saref:isOfferedBy"/>
+                <Variable IRI="#as"/>
+                <Variable IRI="#ms"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class abbreviatedIRI="seitoker:MotionSensor"/>
+                <Variable IRI="#ms"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="saref:makesMeasurement"/>
+                <Variable IRI="#ms"/>
+                <Variable IRI="#msm"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty abbreviatedIRI="saref:hasValue"/>
+                <Variable IRI="#msm"/>
+                <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">presence</Literal>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:proposesActuator"/>
+                <Variable IRI="#as"/>
+                <Variable IRI="#asw"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:proposesState"/>
+                <Variable IRI="#as"/>
+                <NamedIndividual abbreviatedIRI="seitoker:onState"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:hasTargetState"/>
+                <Variable IRI="#asw"/>
+                <NamedIndividual abbreviatedIRI="seitoker:onState"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">priority-based orchestrator for 2 services</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">O1</Literal>
+        </Annotation>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:hasOrchestrator"/>
+                <Variable IRI="#home"/>
+                <Variable IRI="#orch"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:orchestrates"/>
+                <Variable IRI="#orch"/>
+                <Variable IRI="#s1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:influences"/>
+                <Variable IRI="#s1"/>
+                <Variable IRI="#p1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:hasPriority"/>
+                <Variable IRI="#p1"/>
+                <Variable IRI="#pp1"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty abbreviatedIRI="saref:hasValue"/>
+                <Variable IRI="#pp1"/>
+                <Variable IRI="#ppv1"/>
+            </DataPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:proposesState"/>
+                <Variable IRI="#s1"/>
+                <Variable IRI="#ss1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:proposesActuator"/>
+                <Variable IRI="#s1"/>
+                <Variable IRI="#sa1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:orchestrates"/>
+                <Variable IRI="#orch"/>
+                <Variable IRI="#s2"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:influences"/>
+                <Variable IRI="#s2"/>
+                <Variable IRI="#p2"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:hasPriority"/>
+                <Variable IRI="#p2"/>
+                <Variable IRI="#pp2"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty abbreviatedIRI="saref:hasValue"/>
+                <Variable IRI="#pp2"/>
+                <Variable IRI="#ppv2"/>
+            </DataPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:proposesState"/>
+                <Variable IRI="#s2"/>
+                <Variable IRI="#ss2"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:proposesActuator"/>
+                <Variable IRI="#s2"/>
+                <Variable IRI="#sa2"/>
+            </ObjectPropertyAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#greaterThan">
+                <Variable IRI="#ppv2"/>
+                <Variable IRI="#ppv1"/>
+            </BuiltInAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:decides"/>
+                <Variable IRI="#orch"/>
+                <Variable IRI="#s1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="seitoker:hasFinalState"/>
+                <Variable IRI="#sa1"/>
+                <Variable IRI="#ss1"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PeakHours</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Peak Hours</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SIOTHome</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SIOT home</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#WaterMeasurement</IRI>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Water Measurement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room1</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room1LightSwitch</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 1 - light switch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room1LightingService</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 1 - lighting service</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room1MotionMeasurement</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 1 - motion measurement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room1MotionSensor</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 1 - motion sensor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room2</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room2AlarmService</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 2 - alarm service</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room2AlarmSwitch</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 2 - alarm switch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room2MotionMeasurement</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 2 - motion measurement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room2MotionSensor</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 2 - motion sensor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room3</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room3AlarmService</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 3 - alarm service</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room3AlarmSwitch</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 3 - alarm switch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room3LightSwitch</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 3 - light switch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room3LightingService</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 3 - lighting service</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room3MotionMeasurement</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 3 - motion measurement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room3MotionSensor</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 3 - motion sensor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room4</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 4</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room4AlarmService</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 4 - alarm service</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room4AlarmSwitch</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 4 - alarm switch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room4ComfortPriority</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 4 - comfort priority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room4ComfortProfile</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 4 - comfort profile</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room4LightSwitch</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 4 - light switch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room4LightingService</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 4 - lighting service</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room4MotionMeasurement</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 4 - motion measurement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room4MotionSensor</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 4 - motion sensor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room4Orchestrator</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 4 - orchestrator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room4SecurityPriority</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 4 - security priority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room4SecurityProfile</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 4 - security profile</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room5</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 5</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room5AlarmService</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 5 - alarm service</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room5AlarmSwitch</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 5 - alarm switch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room5LightSwitch</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 5 - light switch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room5LightingService</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 5 - lighting service</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room5MotionMeasurement</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 5 - motion measurement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room5MotionSensor</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 5 - motion sensor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room5NoQoSPriority</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 5 - comfort priority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room5NoQoSProfile</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 5 - comfort profile</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room5Orchestrator</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 5 - orchestrator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room5SecurityPriority</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 5 - security priority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#room5SecurityProfile</IRI>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">room 5 - security profile</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.2.3.20160319-0906) https://github.com/owlcs/owlapi -->
+

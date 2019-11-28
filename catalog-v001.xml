@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1574862591448" name="http://www.seido.fr/seito/kernel" uri="SEITO_KER.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1574862591448" name="http://www.seido.fr/seito/siot" uri="SEITO_SHO_SIOT_SS.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1574862591448" name="http://www.seido.fr/seito/smarthome" uri="SEITO_SHO.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1574862591448" name="https://w3id.org/def/saref4bldg" uri="saref4bldg.ttl"/>
+    </group>
+</catalog>
